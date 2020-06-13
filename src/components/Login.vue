@@ -90,6 +90,12 @@ export default {
     font-weight: bold;
     padding: 10px;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+    transition: all 0.4s ease 0.1s;
+  }
+
+  input[type="submit"]:hover {
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.4);
   }
 
   .logo {
@@ -100,5 +106,33 @@ export default {
     position: fixed;
     bottom: 10px;
     right: 10px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .login {
+      width: 400px;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      left: unset;
+      top: unset;
+      z-index: 1;
+      background-color: #49DC89;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+      margin-top: 0;
+    }
+
+    label {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    input[type="submit"] {
+      background-color: white;
+      color: #49DC89;
+    }
   }
 </style>

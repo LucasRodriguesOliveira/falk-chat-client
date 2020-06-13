@@ -40,6 +40,7 @@ export default {
     padding: 6px 10px;
     cursor: pointer;
     border-radius: 50%;
+    transition: all 0.3s ease 0.1s;
   }
 
   .header .close-button .fa-times {
@@ -53,5 +54,32 @@ export default {
 
   .header .close-button:hover {
      background-color: #49AC89;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .header {
+      display: block;
+      position: relative;
+      box-shadow: none;
+    }
+
+    .header .title {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 10px 0;
+      color: #3A634C;
+      font-weight: 400;
+      text-shadow: none;
+    }
+
+    .header .close-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+    .header .close-button .fa-times {
+      font-size: 1rem;
+    }
   }
 </style>

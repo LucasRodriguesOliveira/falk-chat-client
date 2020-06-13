@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <Balloon :class="toggle('closed')"
-      @click="changeStageTo(stages[1])">
-    </Balloon>
-    <Login :class="toggle('login')"
-      @close="changeStageTo(stages[0])"
-      @login="changeStageTo(stages[2])">
-    </Login>
-    <Chat :class="toggle('open')"
-      @close="changeStageTo(stages[3])">
-    </Chat>
-    <MinimizedChat :class="toggle('minimized')"
-      @click="changeStageTo(stages[2])">
-    </MinimizedChat>
+    <transition name="fade" mode="out-in">
+      <Balloon v-if="toggle('closed')"
+        @click="changeStageTo(stages[1])">
+      </Balloon>
+      <Login v-if="toggle('login')"
+        @close="changeStageTo(stages[0])"
+        @login="changeStageTo(stages[2])">
+      </Login>
+      <Chat v-if="toggle('open')"
+        @close="changeStageTo(stages[3])">
+      </Chat>
+      <MinimizedChat v-if="toggle('minimized')"
+        @click="changeStageTo(stages[2])"
+        @maximize="changeStageTo(stages[2])"
+        @close="changeStageTo(stages[0])">
+      </MinimizedChat>
+    </transition>
   </div>
 </template>
 
@@ -47,7 +51,7 @@ export default {
       this.currentStage = stage;
     },
     toggle(stage) {
-      return this.currentStage === stage ? '' : 'hide';
+      return this.currentStage === stage;
     }
   }
 }
@@ -90,5 +94,12 @@ html {
 
 .hide {
   display: none;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
